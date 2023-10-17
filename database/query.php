@@ -11,4 +11,11 @@
     $result = $conn->query($sql);
     return $result;
   }
+  function get_child($parent_id){
+    require "connect.php";
+
+    $sql = "SELECT * FROM products WHERE category_id = $parent_id";
+    $result = $conn->query($sql);
+    return $result;
+  }
 ?>

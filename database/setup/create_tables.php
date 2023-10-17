@@ -18,7 +18,7 @@ $sql = "CREATE TABLE products (
   id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(30) NOT NULL,
   description VARCHAR(255),
-  price DECIMAL(10,2) NOT NULL,
+  price DECIMAL NOT NULL,
   category_id INT(6) UNSIGNED,
   FOREIGN KEY (category_id) REFERENCES categories(id)
 )";

@@ -15,7 +15,7 @@
           <a class="nav-link" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/categories">Menu</a>
+          <a class="nav-link" href="/menu.php">Menu</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Alpacas</a>

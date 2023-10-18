@@ -103,3 +103,17 @@ padding-bottom: 40px;
   flex-direction: column;
   gap: 5px;
 }
+
+.background-2{
+  background-image: url('../images/blob-scatter.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width:100vw;
+  height:auto;
+  min-height:100vh;
+}
+
+.login-form-secondary{
+  background-color:#D8D8D8 ;
+}

@@ -1,34 +1,30 @@
-<form class="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"> 
+<form class="form bg-light w-50 m-auto p-3 rounded" id="SignUpForm" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"> 
+  <h1>Sign Up</h1>
   <div class="form-group">
-    <label>email</label>
-    <input type="email" class="form-control" id="Email">
+    <label>Email</label>
+    <input type="email" class="form-control" id="Email" name="Email" required>
   </div>
-  
+
   <div class="form-group">
     <label>First Name</label>
-    <input type="text" class="form-control" id="FirstName">
+    <input type="text" class="form-control" id="FirstName" name="FirstName" required>
   </div>
 
   <div class="form-group">
     <label>Last Name</label>
-    <input type="text" class="form-control" id="LastName">
+    <input type="text" class="form-control" id="LastName" name="LastName" required>
   </div>
 
   <div class="form-group">
-    <label>Username</label>
-    <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
-    <span class="invalid-feedback"><?php echo $username_err; ?></span>
-  </div> 
-
-  <div class="form-group">
     <label>Password</label>
-    <input type="password" class="form-control" id="Password">
+    <input type="password" class="form-control" id="Password" name="Password" required>
   </div>
 
   <div class="form-group">
     <label>Confirm Password</label>
-    <input type="password" class="form-control" id="ConfirmPassword">
+    <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" required>
   </div>
-
-  <button type="submit" class="btn btn-primary w-100 mt-3">Login</button>
-</div>
+  <?php require "forms/validation/signup_validation.php" ?>
+  <button type="submit" value="Submit" class="btn btn-primary w-100 mt-3">Sign Up</button>
+  <a href="login.php">Already have an account? Login Here</a>
+</form>

@@ -6,7 +6,8 @@
 <body>
     <?php require "views/shared/_header.php" ?>
   <div class="background-2 p-5">
-    <?php require "forms/_login.php" ?>
+    <?php require "forms/_signup.php" ?> 
+
   </div>
 </body>
 

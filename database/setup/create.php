@@ -4,7 +4,7 @@
   $password = "password";
   $port = 3306;
 
-  $conn = new mysqli($server, $username, $password, null, $port);
+  $conn = new mysqli($server, $username, $password, "", $port);
 
   if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);

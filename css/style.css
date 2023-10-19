@@ -98,4 +98,14 @@ body {
 .login-form-secondary {
   background-color: #D8D8D8; }
 
+.toggle-signup {
+  border-radius: 0px 5px 0px 0px;
+  border: 0px;
+  background-color: #D8D8D8; }
+
+.toggle-login {
+  border-radius: 5px 0px 0px 0px;
+  border: 0px;
+  background-color: white; }
+
 /*# sourceMappingURL=style.css.map */

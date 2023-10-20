@@ -21,7 +21,14 @@
           <a class="nav-link" href="#">Alpacas</a>
         </li>
         <li class="nav-item"> 
-          <a class="nav-link" href="login.php">Login </a>
+          <?php
+          if (isset($_SESSION['user'])) {
+            echo '<a class="nav-link" href="user/account.php">My Account </a>';
+          } else {
+            echo '<a class="nav-link" href="login.php">Login </a>';
+          }
+          ?>
+          
         </li>
       </ul>
       

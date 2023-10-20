@@ -43,15 +43,13 @@
     }elseif($_POST["ConfirmPassword"] != $_POST["Password"] ){
       $confirm_pass_err = "The Passwords Do Not Match";
     }else{
-      $password = htmlspecialchars($_POST["Password"]);
+      $password = $_POST["Password"];
       $passwords_match = true; // Set to true if the passwords match
     }
-    
-    
 
     //if there are no errors insert into users table
     if (empty($email_err) && empty($name_err) && empty($pass_err) && $passwords_match) {
-      $hashedPassword = password_hash($userPassword, PASSWORD_DEFAULT);
+      $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
       $sql = "INSERT INTO users (email, first_name, last_name, password) VALUES (?, ?, ?, ?)";
       $stmt = $conn->prepare($sql);

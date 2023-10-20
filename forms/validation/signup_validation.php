@@ -5,38 +5,51 @@
   $email = $first_name = $last_name = $password = "";
   $email_err = $name_err = $pass_err = $confirm_pass_err = "";
 
+  function is_Password_Strong($password){
+    return !preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/', $password);
+  }
+
+  function validate_email($email){
+    return !preg_match('/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/', $email);
+  }
+
+  function validate_text($text){
+    return !preg_match('/^[A-Za-z]+$/', $text);
+  }
+
+  function email_exists($email){
+    //check if the email is in use
+    require "database/connect.php";
+    $sql = $conn->prepare("SELECT id FROM users WHERE email = ?");
+    $sql->bind_param("s", $email);
+    $sql->execute();
+    $sql->bind_result($id);
+    return $sql->fetch();
+  }
+  
   if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-
     //validates email
-    if(!preg_match('/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/', trim($_POST["Email"]))){ //check if email is in the format of an email
+    $canidate_email = filter_var($_POST["Email"], FILTER_VALIDATE_EMAIL);
+    if(validate_email($_POST["Email"])){ //check if email is in the format of an email
       $email_err = "Invalid Email, must look like example@provider.com";
+    }elseif(email_exists($canidate_email)){
+      $email_err = "User Already found by this email";
     }else{
-      //check if the email is in use
-      $canidate_email = filter_var($_POST["Email"], FILTER_VALIDATE_EMAIL);
-      $sql = $conn->prepare("SELECT id FROM users WHERE email = ?");
-      $sql->bind_param("s", $canidate_email);
-      $sql->execute();
-      $sql->bind_result($id);
-      //If the email is in use tell the users, otherwise set email as the inputed email
-      if ($sql->fetch()) {
-          $email_err = "User Already found by this email";
-      }else{
-        $email = $canidate_email;
-      }
+      $email = $canidate_email;
     }
 
     //validates first name and last name
-    if(!preg_match('/^[A-Za-z]+$/', trim($_POST["FirstName"])) || !preg_match('/^[A-Za-z]+$/', trim($_POST["LastName"]))){
+    if(validate_text($_POST["FirstName"]) || validate_text($_POST["LastName"])){
       $name_err = "first and last name can only contain letters";
     }else{
       //asign and steralise first and last name
-      $first_name = filter_var($_POST["FirstName"], FILTER_SANITIZE_STRING); 
-      $last_name = filter_var($_POST["LastName"], FILTER_SANITIZE_STRING);
+      $first_name = htmlspecialchars($_POST["FirstName"]); 
+      $last_name = htmlspecialchars($_POST["LastName"]);
     }
 
     //validates password
-    if(!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/', $_POST["Password"])){
+    if(is_Password_Strong($_POST["Password"])){
       $pass_err = "A Password Must Contain a Minimum of 8 Characters, Contain At Least One: Capital Letter, Number and a Special Character (@$!%*?&)";
     }elseif($_POST["ConfirmPassword"] != $_POST["Password"] ){
       $confirm_pass_err = "The Passwords Do Not Match";

@@ -6,22 +6,23 @@
   $email_err = $name_err = $pass_err = $confirm_pass_err = "";
 
   if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+
     //validates email
-    if(empty(trim($_POST["Email"]))){
-      $email_err = "Email must be provided";
-    } elseif(!preg_match('/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/', trim($_POST["Email"]))){ //check if email is in the format of an email
+    if(!preg_match('/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/', trim($_POST["Email"]))){ //check if email is in the format of an email
       $email_err = "Invalid Email, must look like example@provider.com";
     }else{
       //check if the email is in use
+      $canidate_email = filter_var($_POST["Email"], FILTER_VALIDATE_EMAIL);
       $sql = $conn->prepare("SELECT id FROM users WHERE email = ?");
-      $sql->bind_param("s", trim($_POST["Email"]));
+      $sql->bind_param("s", $canidate_email);
       $sql->execute();
       $sql->bind_result($id);
       //If the email is in use tell the users, otherwise set email as the inputed email
       if ($sql->fetch()) {
           $email_err = "User Already found by this email";
       }else{
-        $email = trim($_POST["Email"]);
+        $email = $canidate_email;
       }
     }
 

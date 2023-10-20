@@ -32,7 +32,7 @@ Start by checking if a post action has been done.
   }
 ```
 
-##Validation
+## Validation
 *Your validation depends on the requiered forms*
 
 To get your from input values: `$_POST["input_name"]`

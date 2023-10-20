@@ -23,7 +23,7 @@
         <li class="nav-item"> 
           <?php
           if (isset($_SESSION['user'])) {
-            echo '<a class="nav-link" href="user/account.php">My Account </a>';
+            echo '<a class="nav-link" href="account.php">My Account </a>';
           } else {
             echo '<a class="nav-link" href="login.php">Login </a>';
           }

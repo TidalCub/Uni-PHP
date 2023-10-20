@@ -18,4 +18,11 @@
     $result = $conn->query($sql);
     return $result;
   }
+
+  function get_user($id){
+    require "connect.php";
+
+    $sql = "SELECT * FROM users WHERE id = $id";
+    return $conn->query($sql);
+  }
 ?>

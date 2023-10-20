@@ -26,31 +26,22 @@
       }
     }
 
-    //validates first name
-    if(empty(trim($_POST["FirstName"])) || empty(trim($_POST["LastName"]))){
-      $name_err = "please provide a first and last name";
-    }elseif(!preg_match('/^[A-Za-z]+$/', trim($_POST["FirstName"])) || !preg_match('/^[A-Za-z]+$/', trim($_POST["LastName"]))){
+    //validates first name and last name
+    if(!preg_match('/^[A-Za-z]+$/', trim($_POST["FirstName"])) || !preg_match('/^[A-Za-z]+$/', trim($_POST["LastName"]))){
       $name_err = "first and last name can only contain letters";
     }else{
-      $first_name = trim($_POST["FirstName"]);
-      $last_name = trim($_POST["LastName"]); // corrected variable name here
+      //asign and steralise first and last name
+      $first_name = filter_var($_POST["FirstName"], FILTER_SANITIZE_STRING); 
+      $last_name = filter_var($_POST["LastName"], FILTER_SANITIZE_STRING);
     }
 
     //validates password
-    if(empty(trim($_POST["Password"]))){
-      $pass_err = "Please Enter a Password";
-    }elseif(!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/', $_POST["Password"])){
+    if(!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/', $_POST["Password"])){
       $pass_err = "A Password Must Contain a Minimum of 8 Characters, Contain At Least One: Capital Letter, Number and a Special Character (@$!%*?&)";
+    }elseif($_POST["ConfirmPassword"] != $_POST["Password"] ){
+      $confirm_pass_err = "The Passwords Do Not Match";
     }else{
       $password = trim($_POST["Password"]);
-    }
-
-    //confirms the password and the confirm password are the same
-    if(empty($_POST["ConfirmPassword"])){
-      $confirm_pass_err = "Please Confirm the Password";
-    } elseif($_POST["ConfirmPassword"] != $_POST["Password"] ){
-      $confirm_pass_err = "The Passwords Do Not Match";
-    }else {
       $passwords_match = true; // Set to true if the passwords match
     }
     

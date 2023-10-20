@@ -1,8 +1,8 @@
 # Alpaca Peruleon Cafe
 
-This is a PHP website for an mobile / online ordering of a coffee shop. 
+This is a PHP website for an mobile/online ordering of a coffee shop. 
 
-This is a university moduel.
+This is a university module.
 
 
 # Login, Sign Up and accounts
@@ -14,17 +14,17 @@ Have a HTML form that has an action to the same file
 
 `action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>`
 
-`PHP_SELF` is a super veriable that refrances to the file name its in.
+`PHP_SELF` is a super variable that references the file name it's in.
 
-To show the errors, the php code will be in the same file as the form.
+To show the errors, the PHP code will be in the same file as the form.
 
-This can be done by either having it in the same file or using requiers.
+This can be done by either having it in the same file or using required.
 
 Once you have a html form, you can validate the user inputs.
 
 ## PHP Code
 
-Start by checking if a post action has been done.
+Start by checking if a post-action has been done.
 
 ```php
   if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -33,20 +33,20 @@ Start by checking if a post action has been done.
 ```
 
 ## Validation
-*Your validation depends on the requiered forms*
+*Your validation depends on the required forms*
 
-To get your from input values: `$_POST["input_name"]`
+To get your form input values: `$_POST["input_name"]`
 **Validating Emails**
-Steralise the input
+Sterilise the input
 `filter_var($_POST["Email"], FILTER_VALIDATE_EMAIL)`
-this will use a PHP built in function to filter the input. This can be used by asssigning to a veriable or in an if statment to check if its a valid email.
+this will use a PHP built-in function to filter the input. This can be used by assigning to a variable or in an if statement to check if it's a valid email.
 
-Perform a regex to insure it is in the form of an expected email.
+Perform a regex to ensure it is in the form of an expected email.
 `preg_match('/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/', $email)`
-*when used in an if statment, if it matches it will return true*
+*when used in an if statement, if it matches it will return true*
 
 **Validating Passwords**
-Steralise the input
+Sterilise the input
 `$password = htmlspecialchars($_POST["Password"])`
 
 Perform a regex to ensure it:
@@ -57,17 +57,17 @@ Perform a regex to ensure it:
 
 `preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/', $password);` 
 
-*when used in an if statment, if it matches it will return true*
+*when used in an if statement, if it matches it will return true*
 
 **Validating Names**
-Steralise the input 
+Sterilise the input 
 `$first_name = htmlspecialchars($_POST["Firstname"])`
 
 Perform a regex to ensure it only contains letters
 `preg_match('/^[A-Za-z]+$/', $first_name);`
 
 **Validating UserNames**
-This will depend on your username requierments, but the ideaa is the same
+This will depend on your username requirements, but the idea is the same
 
 **Example Validation**
 
@@ -86,19 +86,19 @@ This will depend on your username requierments, but the ideaa is the same
 **Displaying Errors to user**
 
 To display errors, you can just `echo $err` to the user.
-Use an if statment if multiple err used.
+Use an if statement if multiple err is used.
 
-*There are diffrent ways to check if all fields are validated, you could check if the requiered verables have been assigned values are no longer empty. Or by a giat if statment*
+*There are different ways to check if all fields are validated, you could check if the required variables have been assigned values are no longer empty. Or by a giant if statement*
 
 ## Storing Data
-Store the user in the databse, this will depend on your table are requierments.
+Store the user in the database, this will depend on your table are requirements.
 
 **Hasing Passwords**
-Its important to store passwords securly, php has a built in way to do this.
+It's important to store passwords securely, php has a built-in way to do this.
 
 `password_hash($password, PASSWORD_DEFAULT);`
 
-PASSWORD_DEFAULT is a php built in way to hash passwords.
+PASSWORD_DEFAULT is a php built-in way to hash passwords.
 
 **Storing the user details**
 A connection needs to be established
@@ -144,13 +144,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 }
   ```
 
-  **Sanatise**
+  **Sanitise**
   ```php
     $email = htmlspecialchars($_POST["Email"]);
     $password = htmlspecialchars($_POST["Password"]);
   ```
 
-  **Valdiate User**
+  **Validate User**
 
   ```php
     $sql = "SELECT * FROM users WHERE email = ?";
@@ -161,9 +161,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
   ```
 
-  This will query the databse, and get the users details.
+  This will query the database, and get the user's details.
 
-  check if there is an user by that email:
+  check if there is a user by that email:
   ```php
     if ($result->num_rows > 0) {
       //code
@@ -184,13 +184,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
   ```
 
-you can check hashed passwords by using phps built in methid
+you can check hashed passwords by using phps built-in method
 `password_verify($input_password, $hashed_password)`
 
 And now your user can sign in. `$_SESSION['user'] = $row["id"]` is used to save the current user to a session, more on it next section.
 
 # Creating a Session
-Sessions allow for data to persit across pages.
+Sessions allow for data to persist across pages.
 
 **Starting a session**
 `session_start();`
@@ -199,13 +199,13 @@ This must be declared before any html
 
 **Adding to session**
 
-You can assign veriables to the session.
+You can assign variables to the session.
 
 `$_SESSION['veriable'] = $data_you_want_to_add`
 
 **Getting Data**
 
-You can use `$_SESSION["veriable"]` just like any other veriable.
+You can use `$_SESSION["veriable"]` just like any other variable.
 
 `$user = $_SESSION["user"]`
 

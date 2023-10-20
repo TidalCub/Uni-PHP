@@ -1,21 +1,10 @@
 <?php
   require "database/connect.php";
+  require "validation.php";
 
   $passwords_match = false;
   $email = $first_name = $last_name = $password = "";
   $email_err = $name_err = $pass_err = $confirm_pass_err = "";
-
-  function is_Password_Strong($password){
-    return !preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/', $password);
-  }
-
-  function validate_email($email){
-    return !preg_match('/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/', $email);
-  }
-
-  function validate_text($text){
-    return !preg_match('/^[A-Za-z]+$/', $text);
-  }
 
   function email_exists($email){
     //check if the email is in use
@@ -54,25 +43,13 @@
     }elseif($_POST["ConfirmPassword"] != $_POST["Password"] ){
       $confirm_pass_err = "The Passwords Do Not Match";
     }else{
-      $password = trim($_POST["Password"]);
+      $password = htmlspecialchars($_POST["Password"]);
       $passwords_match = true; // Set to true if the passwords match
     }
     
-    echo "<div class='w-100 alert alert-primary'>";
-    if (!empty($email_err)) {
-        echo $email_err . "<br>";
-    }
-    if (!empty($pass_err)) {
-        echo $pass_err . "<br>";
-    }
-    if(!empty($name_err)){
-      echo $name_err . "<br>";
-    }
-    if(!$passwords_match){
-      echo $confirm_pass_err . "<br>";
-    }
-    echo "</div>";
+    
 
+    //if there are no errors insert into users table
     if (empty($email_err) && empty($name_err) && empty($pass_err) && $passwords_match) {
       $hashedPassword = password_hash($userPassword, PASSWORD_DEFAULT);
 
@@ -87,6 +64,21 @@
       }
 
       $stmt->close();
+    } else{
+        echo "<div class='w-100 alert alert-primary'>";
+        if (!empty($email_err)) {
+            echo $email_err . "<br>";
+        }
+        if (!empty($pass_err)) {
+            echo $pass_err . "<br>";
+        }
+        if(!empty($name_err)){
+          echo $name_err . "<br>";
+        }
+        if(!$passwords_match){
+          echo $confirm_pass_err . "<br>";
+        }
+        echo "</div>";
     }
   }
 ?>

@@ -4,6 +4,17 @@ This is a PHP website for an mobile/online ordering of a coffee shop.
 
 This is a university module.
 
+## Notice Befor Reading
+
+This is a work in progress php webstie, this may not be best practises, or clean, but this is the way i found and it does follow some best practicies pricaples.
+
+This code may get refactored in the future, and thos guid will most likly stay the same, it provides usful information in how to make your own validation.
+
+Do not coppy my code straight from the files, use them mearly as a helpful guid to support you in your journy.
+
+There will be spelling mistakes.
+
+---
 
 # Login, Sign Up and accounts
 

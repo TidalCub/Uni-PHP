@@ -19,7 +19,7 @@ There will be spelling mistakes.
 # Login, Sign Up and accounts
 
 ## SignUp
-*This code can be found in [SignUp Form](forms/validation/_signup.php) abd [a Validation Code](forms/validation/validation.php)*
+*This code can be found in [SignUp Form](forms/_signup.php) abd [a Validation Code](forms/validation/validation.php)*
 
 
 **Prerequisites**

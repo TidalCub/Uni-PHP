@@ -8,10 +8,15 @@ This is a university module.
 # Login, Sign Up and accounts
 
 ## SignUp
-*This code can be found in forms/validation/_signup.php forms/validation/validation.php*
+*This code can be found in [SignUp Form](forms/validation/_signup.php) abd [a Validation Code](forms/validation/validation.php)*
 
-Have a HTML form that has an action to the same file
 
+**Prerequisites**
+- Have a HTML form
+  
+
+## HTML Forms actions
+You will need to have an action to the form that submits to its selfe, like this:
 `action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>`
 
 `PHP_SELF` is a super variable that references the file name it's in.
@@ -23,6 +28,7 @@ This can be done by either having it in the same file or using required.
 Once you have a html form, you can validate the user inputs.
 
 ## PHP Code
+*PHP code needs to be in php tags `<?php ?>`*
 
 Start by checking if a post-action has been done.
 

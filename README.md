@@ -53,7 +53,8 @@ Start by checking if a post-action has been done.
 *Your validation depends on the required forms*
 
 To get your form input values: `$_POST["input_name"]`
-**Validating Emails**
+
+#### Validating Emails
 Sterilise the input
 `filter_var($_POST["Email"], FILTER_VALIDATE_EMAIL)`
 this will use a PHP built-in function to filter the input. This can be used by assigning to a variable or in an if statement to check if it's a valid email.
@@ -62,7 +63,7 @@ Perform a regex to ensure it is in the form of an expected email.
 `preg_match('/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/', $email)`
 *when used in an if statement, if it matches it will return true*
 
-**Validating Passwords**
+#### Validating Passwords
 Sterilise the input
 `$password = htmlspecialchars($_POST["Password"])`
 
@@ -76,17 +77,17 @@ Perform a regex to ensure it:
 
 *when used in an if statement, if it matches it will return true*
 
-**Validating Names**
+#### Validating Names
 Sterilise the input 
 `$first_name = htmlspecialchars($_POST["Firstname"])`
 
 Perform a regex to ensure it only contains letters
 `preg_match('/^[A-Za-z]+$/', $first_name);`
 
-**Validating UserNames**
+#### Validating UserNames
 This will depend on your username requirements, but the idea is the same
 
-**Example Validation**
+#### Example Validation
 
 ```php
   $canidate_email = filter_var($_POST["Email"], FILTER_VALIDATE_EMAIL);
@@ -100,7 +101,7 @@ This will depend on your username requirements, but the idea is the same
   }
 ```
 
-**Displaying Errors to user**
+#### Displaying Errors to user
 
 To display errors, you can just `echo $err` to the user.
 Use an if statement if multiple err is used.
@@ -110,14 +111,14 @@ Use an if statement if multiple err is used.
 ## Storing Data
 Store the user in the database, this will depend on your table are requirements.
 
-**Hasing Passwords**
+#### Hasing Passwords
 It's important to store passwords securely, php has a built-in way to do this.
 
 `password_hash($password, PASSWORD_DEFAULT);`
 
 PASSWORD_DEFAULT is a php built-in way to hash passwords.
 
-**Storing the user details**
+#### Storing the user details
 A connection needs to be established
 ```php
   $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
@@ -133,7 +134,7 @@ A connection needs to be established
   }
 ```
 
-#Login
+# Login
 You will need a html form, with an action to the same file.
 
 ```html
@@ -153,7 +154,7 @@ You will need a html form, with an action to the same file.
   </from>
 ```
 
-**Check if the action is a post**
+#### Check if the action is a post
 
 ```php
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -161,13 +162,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 }
   ```
 
-  **Sanitise**
+  #### Sanitise
   ```php
     $email = htmlspecialchars($_POST["Email"]);
     $password = htmlspecialchars($_POST["Password"]);
   ```
 
-  **Validate User**
+ #### Validate User
 
   ```php
     $sql = "SELECT * FROM users WHERE email = ?";
@@ -209,24 +210,24 @@ And now your user can sign in. `$_SESSION['user'] = $row["id"]` is used to save 
 # Creating a Session
 Sessions allow for data to persist across pages.
 
-**Starting a session**
+#### Starting a session*
 `session_start();`
 
 This must be declared before any html
 
-**Adding to session**
+#### Adding to session
 
 You can assign variables to the session.
 
 `$_SESSION['veriable'] = $data_you_want_to_add`
 
-**Getting Data**
+#### Getting Data From Session
 
 You can use `$_SESSION["veriable"]` just like any other variable.
 
 `$user = $_SESSION["user"]`
 
-**Checking a user is sign in**
+#### Checking a user is sign in
 
 ```php
   if (isset($_SESSION['user'])) {

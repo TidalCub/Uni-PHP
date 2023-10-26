@@ -2,7 +2,9 @@
   <div class="custom-header d-flex justify-content-between">
     <h1>Alpaca Peruleon Cafe <h6><span class="badge bg-secondary">PHP</span></h6></h1>
     <div class="cart">
-      <img src="images/cart.svg" style="height: 40px; width: auto;">
+      <a href="/basket.php">
+        <img src="images/cart.svg" style="height: 40px; width: auto;">
+      </a>
     </div>
   </div>
   <div class="custom-nav">

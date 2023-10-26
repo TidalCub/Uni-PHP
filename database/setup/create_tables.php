@@ -1,12 +1,12 @@
 <?php
 
-//a function that executes the sql command and saves a table
+// a function that executes the SQL command and saves a table
 function save_table($sql){
   require 'database/connect.php';
   if ($conn->query($sql) === TRUE) {
-    echo "Table created successfully";
+    echo "Table created successfully \n";
   } else {
-    echo "Error creating table: " . $conn->error;
+    echo "Error creating table: " . $conn->error . "\n";
   }
   $conn->close();
 }
@@ -18,7 +18,7 @@ $sql = "CREATE TABLE IF NOT EXISTS categories (
   image_path VARCHAR(255)
 )";
 
-save_table($sql); //calls the function that saves the table
+save_table($sql); // calls the function that saves the table
 
 // Create the products table
 $sql = "CREATE TABLE IF NOT EXISTS products (
@@ -31,7 +31,7 @@ $sql = "CREATE TABLE IF NOT EXISTS products (
   FOREIGN KEY (category_id) REFERENCES categories(id)
 )";
 
-save_table($sql); //calls the function that saves the table
+save_table($sql); // calls the function that saves the table
 
 $sql = "CREATE TABLE IF NOT EXISTS users(
   id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -42,7 +42,25 @@ $sql = "CREATE TABLE IF NOT EXISTS users(
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 )";
 
-save_table($sql); //calls the function that saves the table
+save_table($sql); // calls the function that saves the table
 
+$sql = "CREATE TABLE IF NOT EXISTS orders (
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  user_id INT,
+  stat varchar(20),
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY(user_id) REFERENCES users(id)
+);";
 
+save_table($sql);
+
+$sql = "CREATE TABLE IF NOT EXISTS order_items(
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  order_id INT,
+  product_id INT(6) UNSIGNED,
+  FOREIGN KEY(order_id) REFERENCES orders(id),
+  FOREIGN KEY(product_id) REFERENCES products(id)
+);";
+
+save_table($sql);
 ?>

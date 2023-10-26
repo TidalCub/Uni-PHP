@@ -12,6 +12,8 @@
             echo $row["email"];
         }
     ?>
+    
+    <a href="/user/logout.php" class="btn btn-primary">Logout</a>
 </body>
 
 </html>

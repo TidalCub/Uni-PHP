@@ -18,6 +18,7 @@
         if (password_verify($password, $row['password'])){
           echo "you are now loged in";
           $_SESSION['user'] = $row["id"];
+          header("Location: /");
         }else{
           echo "Incorrect Username or Password";
         }
@@ -27,3 +28,4 @@
     }
   }
 ?>
+

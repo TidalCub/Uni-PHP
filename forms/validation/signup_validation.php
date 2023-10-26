@@ -54,7 +54,7 @@
       $sql = "INSERT INTO users (email, first_name, last_name, password) VALUES (?, ?, ?, ?)";
       $stmt = $conn->prepare($sql);
       $stmt->bind_param("ssss", $email, $first_name, $last_name, $hashedPassword);
-
+        
       if ($stmt->execute()) {
         header('Location: /');
       }  else{

@@ -14,7 +14,8 @@ function save_table($sql){
 // Create the categories table
 $sql = "CREATE TABLE IF NOT EXISTS categories (
   id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(30) NOT NULL
+  name VARCHAR(30) NOT NULL,
+  image_path VARCHAR(255)
 )";
 
 save_table($sql); //calls the function that saves the table
@@ -26,6 +27,7 @@ $sql = "CREATE TABLE IF NOT EXISTS products (
   description VARCHAR(255),
   price DECIMAL(10,2) NOT NULL,
   category_id INT(6) UNSIGNED,
+  image_path VARCHAR(255),
   FOREIGN KEY (category_id) REFERENCES categories(id)
 )";
 

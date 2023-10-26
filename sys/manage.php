@@ -34,7 +34,7 @@
   
   <div class="card w-25">
     <div class="card-body">
-      <form method="post" action="../database/insert.php" class="form">
+      <form method="post" action="../database/insert.php" class="form" enctype="multipart/form-data"  >
           <div class="form-group"> 
             <label for="name" class="h3">Product Name:</label>
             <input class="form-control" type="text" id="name" name="name" required>
@@ -59,6 +59,12 @@
               ?>
             </select>
           </div>
+
+          <div class="form-group">
+            <label for="formFile" class="form-label">product image</label>
+            <input class="form-control" type="file" name="product_image" id="product_image" accept="image/*">
+          </div>
+
           <input type="hidden" name="table" value="products">
           <button class="btn btn-primary" type="submit">Add Product</button>
         </form>

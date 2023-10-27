@@ -18,14 +18,25 @@
 <div class="d-flex flex-row">
   <div class="order-sum w-25 fixed sticky-top d-none d-lg-block">
     <h1 class="w-100 text-center p-3 neutral-text">Order Summary</h1>
-    <ul class="w-100" >
       <?php 
         $results = $basket->get_basket();
         foreach ($results as $basket_items){
-          echo "<li>". $basket_items["product_name"] ."</li>";
+          echo "
+          <hr/>
+            <div class='d-flex justify-content-between basket-item'>
+              <div class='p-2 pt-1 pb-1'>
+                <h4>". $basket_items["product_name"] ."</h4>"
+                    . $basket_items["price"] .     
+             "</div>
+             <a href='/' class='remove-basket-item d-flex align-items-center justify-content-center'>
+              <i class='fa-solid fa-trash' style='color: #D8D8D8;' class='m-1'></i>
+             </a>
+            </div>
+            
+          ";
         }
       ?>
-    </ul>
+
     <div class="w-100 d-flex justify-content-center">
       <a class="link btn btn-primary"><span class="h1">Checkout</span></a>
     </div>

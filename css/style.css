@@ -133,4 +133,24 @@ body {
 .order-sum ul {
   height: 70vh; }
 
+.list-group-item {
+  background: none;
+  border-left: none;
+  border-right: none; }
+
+.remove-basket-item {
+  border: 1px solid #d22d45;
+  border-right: none;
+  width: 18px;
+  margin: 0;
+  border-radius: 10px 0 0 10px;
+  background-color: #d22d45; }
+
+.remove-basket-item:hover {
+  transition: all 0.2s;
+  width: 30px; }
+
+.order-sum hr {
+  margin: 0; }
+
 /*# sourceMappingURL=style.css.map */

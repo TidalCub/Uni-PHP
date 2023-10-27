@@ -51,12 +51,13 @@
 
     function get_basket(){
       require "database/connect.php";
-      $stmt = $conn->prepare("
-      SELECT order_items.id, order_items.order_id, order_items.product_id, products.name AS product_name, products.price 
+      $stmt = $conn->prepare(
+      "SELECT order_items.id, order_items.order_id, order_items.product_id, products.name AS product_name, products.price 
       FROM order_items 
       INNER JOIN products 
       ON order_items.product_id = products.id 
-      WHERE order_items.order_id = ?");
+      WHERE order_items.order_id = ?
+      ORDER BY order_items.id");
 
       $stmt->bind_param("i", $this->basket_id);
       $stmt->execute();

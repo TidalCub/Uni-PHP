@@ -3,6 +3,15 @@
 <head>
   <title>My Website</title>
   <?php include 'views/shared/_head.php'; ?>
+  <?php require "user/basket_obj.php";
+    $basket = new basket;
+    if (isset($_GET['option']) && isset($_GET['value'])) {
+      $product_id = $_GET["value"];
+      $location = $_SERVER["PHP_SELF"];
+      $basket->add($product_id);
+      header("location: $location");
+    };
+  ?>
 </head>
 <body>
 <?php include 'views/shared/_header.php'; ?>
@@ -10,7 +19,12 @@
   <div class="order-sum w-25 fixed sticky-top d-none d-lg-block">
     <h1 class="w-100 text-center p-3 neutral-text">Order Summary</h1>
     <ul class="w-100" >
-
+      <?php 
+        $results = $basket->get_basket();
+        foreach ($results as $basket_items){
+          echo "<li>". $basket_items["product_name"] ."</li>";
+        }
+      ?>
     </ul>
     <div class="w-100 d-flex justify-content-center">
       <a class="link btn btn-primary"><span class="h1">Checkout</span></a>
@@ -47,13 +61,5 @@
 </html>
 
 <?php
-require "user/basket_obj.php";
-$basket = new basket;
-echo $basket->basket_id;
-if (isset($_GET['option']) && isset($_GET['value'])) {
-  $product_id = $_GET["value"];
-  $location = $_SERVER["PHP_SELF"];
-  $basket->add($product_id);
-  header("location: $location");
-};
+
   ?>

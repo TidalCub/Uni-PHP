@@ -79,5 +79,22 @@
       }
       return $results;
     }
+
+    function get_total(){
+      require "database/connect.php";
+      $stmt = $conn->prepare(
+        "SELECT SUM(products.price) AS order_total
+        FROM order_items 
+        INNER JOIN products 
+        ON order_items.product_id = products.id 
+        WHERE order_items.order_id = ?");
+      $stmt->bind_param("i", $this->basket_id);
+      $stmt->execute();
+
+      $stmt->store_result();
+      $stmt->bind_result($order_total);
+      $stmt->fetch();
+      return $order_total;
+    }
   }
 ?>

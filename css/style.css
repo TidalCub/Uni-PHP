@@ -170,4 +170,46 @@ body {
 .remove-basket-item:hover .fa-plus-minus {
   display: none; }
 
+.checkout-sum {
+  min-height: 60vh;
+  max-height: 90vh;
+  border: 2px solid #1E1E1E;
+  border-radius: 26px;
+  background-color: #fff; }
+
+.checkout-payment {
+  min-height: 60vh;
+  max-height: 90vh; }
+
+.checkout-payment-choice {
+  border: 2px solid #1E1E1E;
+  border-radius: 26px;
+  height: auto;
+  background-color: #fff; }
+
+.checkout-payment-details {
+  border: 2px solid #1E1E1E;
+  border-radius: 26px;
+  width: 100%;
+  background-color: #fff; }
+
+.checkout-sum h2 {
+  color: #1E1E1E; }
+
+.numberCircle {
+  border-radius: 50%;
+  padding: 4px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 2px solid #1E1E1E;
+  color: #1E1E1E;
+  text-align: center; }
+
+.checkout-background {
+  background-image: url("../images/green-wavy-devider.svg");
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 100vh; }
+
 /*# sourceMappingURL=style.css.map */

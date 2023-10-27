@@ -177,8 +177,30 @@ padding-bottom: 40px;
 
 .remove-basket-item:hover{
   transition: all 0.2s;
-  width:30px;
+  width:40px;
 }
 .order-sum hr{
   margin:0;
+}
+
+.basket-qty{
+  color:#D8D8D8;
+}
+
+.minus{
+  opacity: 0;
+  display: none;
+}
+
+.remove-basket-item:hover .minus{
+  display: contents;
+  opacity: 1;
+}
+
+.minus i{
+  margin: 2px;
+}
+
+.remove-basket-item:hover .fa-plus-minus{
+  display: none;
 }

@@ -49,15 +49,26 @@
       }
     }   
 
+    function remove($product_id){
+      require "database/connect.php";
+      $stmt = $conn->prepare("DELETE FROM order_items WHERE order_id = ? AND product_id = ? LIMIT 1");
+      $stmt->bind_param("ii", $this->basket_id, $product_id);
+      if ($stmt->execute()) {
+        return 200;
+      } else {
+        return 500;
+      }
+    }
+
     function get_basket(){
       require "database/connect.php";
       $stmt = $conn->prepare(
-      "SELECT order_items.id, order_items.order_id, order_items.product_id, products.name AS product_name, products.price 
-      FROM order_items 
-      INNER JOIN products 
-      ON order_items.product_id = products.id 
-      WHERE order_items.order_id = ?
-      ORDER BY order_items.id");
+        "SELECT order_items.product_id, products.name AS product_name, products.price, COUNT(order_items.product_id) AS item_count 
+        FROM order_items 
+        INNER JOIN products 
+        ON order_items.product_id = products.id 
+        WHERE order_items.order_id = ?
+        GROUP BY order_items.product_id");
 
       $stmt->bind_param("i", $this->basket_id);
       $stmt->execute();

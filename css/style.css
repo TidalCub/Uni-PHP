@@ -1,12 +1,15 @@
 body {
   font-family: "Koulen"; }
 
-.btn-primary {
+.btn-primary, .btn-thirdly {
   background-color: #F4A259;
   border: none; }
 
-.btn-primary:hover {
+.btn-primary:hover, .btn-thirdly:hover {
   background-color: #FF9F4A; }
+
+.btn-thirdly {
+  background-color: #519D54; }
 
 .neutral-text {
   color: #F7F7F7; }
@@ -77,8 +80,7 @@ body {
 .items {
   width: 100%;
   height: 1000px;
-  background-color: #519D54;
-  background-image: url("../images/blurry-1.svg");
+  background-image: url("../images/blob-scatter.svg");
   background-size: cover;
   background-position: center;
   text-align: center;
@@ -128,9 +130,15 @@ body {
 .order-sum {
   height: 100vh;
   background-color: #F4A259;
-  box-shadow: 4px 0px 4px 0px rgba(0, 0, 0, 0.25); }
+  box-shadow: 4px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  background-image: url("../images/blob-scatter-inverted.svg");
+  background-size: cover;
+  background-position: left; }
 
 .order-sum ul {
+  height: 70vh; }
+
+.order-sum .basket {
   height: 70vh; }
 
 .list-group-item {

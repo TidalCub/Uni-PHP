@@ -13,10 +13,12 @@
 <div class="d-flex flex-row">
   <div class="order-sum w-25 fixed sticky-top d-none d-lg-block">
     <h1 class="w-100 text-center p-3 neutral-text">Order Summary</h1>
-    <?php require "views/shared/_basket.php"?>
+    <div class="basket">
+      <?php require "views/shared/_basket.php"?>
+    </div>
 
     <div class="w-100 d-flex justify-content-center">
-      <a href="/checkout.php" class="link btn btn-primary"><span class="h1">Checkout</span></a>
+      <a href="/checkout.php" class="link btn btn-thirdly"><span class="h1">Checkout</span></a>
     </div>
   </div>
   <div class="items">

@@ -22,7 +22,7 @@
       $stmt->execute();
       $stmt->bind_result($id);
       if ($stmt->fetch()) {
-        $this->basket_id = $_SESSION["basket"];
+        $this->basket_id = $id;
       } else {
         $this->create_basket();
       }

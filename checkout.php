@@ -17,6 +17,7 @@
         </div>
         
         <div class="checkout-payment col-6 col-lg-4 col-6 d-flex flex-column gap-2 justify-content-around">
+          <?php if(date('H:i') < "19:00" && date('H:i') > "8:00") :?>
           <form>
             <div class="col-12"><span class="h5"> Chose Payment Method</span></div>
             <div class="checkout-payment-choice col-12">
@@ -67,6 +68,12 @@
             <button class="btn btn-primary col-12" type="submit"><span class="display-5">Pay</span></button>
             </div>
           </form>
+          <?php else :?>
+            <div class="col-12 checkout-payment-details p-5">
+              <h1 >We are currently Closed</h1>
+              <p>Are opening hours as 8:00 - 19:00</p>
+            </div>
+          <?php endif ?> 
         </div>
       </div>
     </div>

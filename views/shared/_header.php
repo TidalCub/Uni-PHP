@@ -36,4 +36,7 @@
       
     </div>
   </div>
+  <?php if(date('H:i') > "19:00" && date('H:i') < "8:00") : ?>
+    <div class="bg-danger col-12 p-2 pt-3 text-center closed-banner"><h5><i class='fas fa-exclamation-triangle'></i> We are currently closed. we will reopen at 8am tomorrow</h5></div>
+  <?php endif; ?>
 </nav>

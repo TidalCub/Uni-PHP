@@ -1,4 +1,12 @@
 <?php $results = $basket->get_basket();
+if(empty($results)):?>
+<div class="col-12 text-center p-3">
+    <h3>There are no items in your basket</h3>
+    <p>Add an item to start</p>   
+</div>
+
+<?php 
+endif; 
 foreach ($results as $basket_items): ?>
     <hr/>
     <div class='d-flex justify-content-between basket-item'>

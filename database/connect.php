@@ -1,8 +1,11 @@
 <?php
-$servername = "127.0.0.1";
-$username = "root";
-$password = "";
-$dbname = "alpaca_peruleon_cafe";
+require_once ('vendor/autoload.php');
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
+$dotenv->load();
+$servername = $_ENV["SERVER"];
+$username = $_ENV["DB_USERNAME"];
+$password = $_ENV["DB_PASSWORD"];
+$dbname = $_ENV["DB_DATABASE"];
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 

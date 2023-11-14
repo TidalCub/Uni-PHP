@@ -12,9 +12,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Koulen">
 </head>
 <body>
-  <?php include '../views/shared/_header.php'; ?>
+  <?php include 'views/shared/_header.php'; ?>
   <?php 
-      require "../database/query.php";
+      require "database/query.php";
 
       $results = query_table("categories");
 

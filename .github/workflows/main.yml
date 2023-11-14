@@ -19,6 +19,6 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           server: ${{ secrets.FTP_SERVER }}
           local_path: './*'
-          remote_path: '/httpdocs/PHP-website'
+          remote_path: '/httpdocs'
           sftp_only: true
           password: ${{ secrets.FTP_PASSWORD }}

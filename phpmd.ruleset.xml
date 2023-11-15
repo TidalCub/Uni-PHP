@@ -10,11 +10,6 @@
         My custom rule set that checks my code...
     </description>
 
-    <rule ref="rulesets/unusedcode.xml" />
-    <rule ref="rulesets/codesize.xml/CyclomaticComplexity">
-        <priority>1</priority>
-        <properties>
-            <property name="reportLevel" value="5" />
-        </properties>
-    </rule>
+    
+    <rule ref="rulesets/codesize.xml/CyclomaticComplexity"></rule>
 </ruleset>

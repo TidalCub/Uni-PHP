@@ -11,5 +11,7 @@
     </description>
 
     
-    <rule ref="rulesets/codesize.xml/CyclomaticComplexity"></rule>
+    <rule ref="rulesets/codesize.xml"></rule>
+    <rule ref="rulesets/cleancode.xml"></rule>
+    <rule ref="rulesets/controversial.xml"></rule>
 </ruleset>

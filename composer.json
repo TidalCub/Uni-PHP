@@ -9,5 +9,8 @@
             "name": "Leon Skinner",
             "email": "Leon.skinner@bt.com"
         }
-    ]
+    ],
+    "require-dev": {
+        "phpmd/phpmd": "^2.14"
+    }
 }

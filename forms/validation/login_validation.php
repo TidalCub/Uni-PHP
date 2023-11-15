@@ -1,6 +1,9 @@
 <?php 
   require "database/connect.php";
   require "validation.php";
+
+  $redirectParam = isset($_GET['redirect']) ? $_GET['redirect'] : '';
+
   if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $email = htmlspecialchars($_POST["Email"]);
@@ -18,7 +21,8 @@
         if (password_verify($password, $row['password'])){
           echo "you are now loged in";
           $_SESSION['user'] = $row["id"];
-          header("Location: /");
+          $redirect = $_POST["redirect"];
+          header("Location: /$redirect");
         }else{
           echo "Incorrect Username or Password";
         }

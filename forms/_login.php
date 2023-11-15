@@ -11,4 +11,5 @@
   <?php require "forms/validation/login_validation.php" ?>
   <button type="submit" class="btn btn-primary w-100 mt-3">Login</button>
   <a class="m-auto" href="signup.php">Dont have an account? SignUp for one here</a>
+  <input type="hidden" name="redirect" value="<?=$redirectParam?>">
 </from>

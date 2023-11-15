@@ -25,7 +25,7 @@
     <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" required>
   </div>
 
-  <?php require "forms/validation/signup_validation.php" ?>
+  <?php require "forms/action/signup_action.php" ?>
   <button type="submit" value="Submit" class="btn btn-primary w-100 mt-3">Sign Up</button>
   <a href="login.php">Already have an account? Login Here</a>
 </form>

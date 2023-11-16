@@ -10,8 +10,9 @@
   <?php require_once("views/shared/_header.php") ?>
 
   <?php 
+    require_once("database/connect.php");
     require_once("forms/_new-item.php");
-    require_once("forms/_new-category.php") 
+    require_once("forms/_new-category.php"); 
   ?>
 </body>
 </html>

@@ -1,6 +1,4 @@
 <?php 
-require_once 'database/connect.php';
-
 function file_handler() {
   $uploaddir = 'uploads/';
   $uploadfile = $uploaddir . basename($_FILES['product_image']['name']);
@@ -23,7 +21,7 @@ function get_params(){
   ];
 }
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["table"] == "products"){
   $path = file_handler();
   $params = get_params();
   if (is_numeric($params["productPrice"])) {

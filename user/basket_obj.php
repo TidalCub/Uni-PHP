@@ -30,6 +30,7 @@
     }
 
     public function __construct(){
+      require "database/connect.php";
       if(!isset($_SESSION["user"])){
         header("Location: /login.php?redirect=menu.php&requier_signin=true", 300);
       };
@@ -95,6 +96,17 @@
       $stmt->bind_result($order_total);
       $stmt->fetch();
       return $order_total;
+    }
+
+    function update_status(){
+      require "database/connect.php";
+      $stmt = $conn->prepare("UPDATE orders SET stat = 'payed' WHERE id = ?");
+      $stmt->bind_param("i", $this->basket_id);
+      if($stmt->execute()){
+        return true;
+      } else {
+        return false;
+      }
     }
   }
 ?>

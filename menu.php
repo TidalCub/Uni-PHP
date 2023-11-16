@@ -27,20 +27,18 @@
     $results = query_table("categories"); ?>
     <div class="col-12 d-flex overflow-hidden">
       <button class="btn btn-primary btn-sm scroll-left">&lt;</button>
-      <div class="scroll-container d-flex gap-1 overflow-hidden flex-nowrap w-100">
+      <div class="scroll-container d-flex overflow-hidden flex-nowrap w-100 btn-border">
         <!-- for loop to display the categories at the top for navigation -->
         
         <?php foreach ($results as $row) : ?>
-          <div class="flex-grow-1 category">
-            <a href="#<?=$row["id"]?>" class="link"><h2 class="pt-2"><?= $row["name"] ?></h2></a>
-          </div>
+            <a href="#<?=$row["id"]?>" class="btn btn-light btn-border-r flex-grow-1"><h2 class="pt-2"><?= $row["name"] ?></h2></a>
         <?php endforeach; ?>
       </div>
       <button class="btn btn-primary btn-sm scroll-right">&gt;</button>
     </div>
     <!-- for loop to display all the categories with the items -->
     <?php foreach ($results as $row) : ?>
-      <h1><a id="<?= $row["id"] ?>"></a></q><?= $row["name"] ?></h1>
+      <h1 class="pt-3"><a id="<?= $row["id"] ?>"></a></q><?= $row["name"] ?></h1>
       <?php $itemsResult = get_child($row["id"]); ?>
       <div class='cat'>
         <!-- while loop to display all the items within the category -->

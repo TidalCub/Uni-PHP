@@ -50,16 +50,17 @@
       return "....";
     }
 
-    public function get_all_orders(){
+    public function get_all_orders($limit){
       require "database/connect.php";
       $stmt = $conn->prepare(
         "SELECT orders.id, orders.user_id, orders.stat, orders.created_at
         FROM orders
         JOIN users ON orders.user_id = users.id
         WHERE users.id = ?
-        AND orders.stat IN ('complete', 'paid');"
+        AND orders.stat IN ('complete', 'paid')
+        LIMIT ?;"
       );
-      $stmt->bind_param("i", $this->user_id);
+      $stmt->bind_param("ii", $this->user_id, $limit);
       $stmt->execute();
       $result = $stmt->get_result();
       return $result;

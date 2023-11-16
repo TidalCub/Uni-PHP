@@ -52,7 +52,7 @@
     <div class="col-12 col-md-9 col-lg-9 ">
       <h1 class="text-center">Past Orders</h1>
       <div class="col-12 d-flex gap-2 flex-wrap flex-row p-2">
-        <?php foreach($user->get_all_orders() as $order):?>
+        <?php foreach($user->get_all_orders(10) as $order):?>
           <div class="col-12 col-md-3 col-lg-3 bg-light rd-normal p-2">
             <h3 class="text-center">Order: <?= $order["id"]?></h3>
             <p class="text-center">Ordered at: <?= $order["created_at"] ?></p>

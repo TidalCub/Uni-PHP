@@ -100,7 +100,7 @@
 
     function update_status(){
       require "database/connect.php";
-      $stmt = $conn->prepare("UPDATE orders SET stat = 'payed' WHERE id = ?");
+      $stmt = $conn->prepare("UPDATE orders SET stat = 'paid' WHERE id = ?");
       $stmt->bind_param("i", $this->basket_id);
       if($stmt->execute()){
         return true;

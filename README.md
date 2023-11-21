@@ -8,7 +8,7 @@ This is a university module.
 
 ## Structure
 
-![code structure of forms](/misc/PHP_file_overviews.png "form overview")
+![code structure of forms](misc/PHP_file_overviews.png "form overview")
 
 ---
 # Guides

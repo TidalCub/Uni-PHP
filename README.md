@@ -4,6 +4,15 @@ This is a PHP website for an mobile/online ordering of a coffee shop.
 
 This is a university module.
 
+# Overview
+
+## Structure
+
+![code structure of forms](/misc/PHP_file_overviews.png "form overview")
+
+---
+# Guides
+
 ## Notice Before Reading
 
 This is a work in progress php webstie, this may not be best practises, or clean, but this is the way i found and it does follow some best practicies pricaples.

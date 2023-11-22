@@ -39,6 +39,7 @@
     <h1 class="text-center">Customer Reviews</h1>
     <div class="col-12">
       <h3>Leave a review</h3>
+      <?php include "forms/_review.php" ?>
     </div>
   </div>
 </div>

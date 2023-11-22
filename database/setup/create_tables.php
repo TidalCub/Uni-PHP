@@ -63,4 +63,16 @@ $sql = "CREATE TABLE IF NOT EXISTS order_items(
 );";
 
 save_table($sql);
+
+$sql ="CREATE TABLE IF NOT EXISTS reviews(
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  product_id int(6) UNSIGNED,
+  user_id INT,
+  order_id INT,
+  FOREIGN KEY(order_id) REFERENCES orders(id),
+  FOREIGN KEY(product_id) REFERENCES products(id),
+  FOREIGN KEY(user_id) REFERENCES users(id)
+);";
+
+save_table($sql);
 ?>

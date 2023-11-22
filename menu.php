@@ -48,7 +48,7 @@
             <div class='flex-grow-1 pt-3 pr-4'>
               <h3><?= $item["name"] ?></h3>
               <p><?= $item["description"] ?></p>
-              <a href='/view/<?= $item["id"] ?>' class='link btn btn-primary'>View</a>
+              <a href='/product.php?product=<?= $item["id"] ?>' class='link btn btn-primary'>View</a>
               <a href='<?= $_SERVER['PHP_SELF'] ?>?option=add&value=<?= $item["id"] ?>' class='link btn btn-primary'>Add to basket (£<?= $item["price"] ?>)</a>
             </div>
           </div>

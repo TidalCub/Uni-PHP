@@ -66,6 +66,8 @@ save_table($sql);
 
 $sql ="CREATE TABLE IF NOT EXISTS reviews(
   id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  comment varchar(400),
+  star_rating TINYINT CHECK (star_rating >= 1 AND star_rating <= 5),
   product_id int(6) UNSIGNED,
   user_id INT,
   order_id INT,

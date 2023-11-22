@@ -57,7 +57,7 @@
         FROM orders
         JOIN users ON orders.user_id = users.id
         WHERE users.id = ?
-        AND orders.stat IN ('complete', 'paid')
+        AND orders.stat IN ('completed', 'paid')
         LIMIT ?;"
       );
       $stmt->bind_param("ii", $this->user_id, $limit);

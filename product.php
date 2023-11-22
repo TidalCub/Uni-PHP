@@ -1,13 +1,18 @@
 <?php 
-  require_once "helpers/product.php";
+  require "helpers/product.php";
   if(isset($_GET["product"])){
     $product_id = $_GET["product"];
     $product = get_item($product_id);
   }else{
-    header("Location: ../menu.php");
+    if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["product_id"])){
+      $product_id = $_POST["product_id"];
+      header("Location: /product.php?product=$product_id");
+    }else{
+      header("Location: ../menu.php");
+    }
+    
   }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

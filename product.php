@@ -53,9 +53,11 @@
   <div class="col-12 content-green p-3 align-self-stretch">
     <h1 class="text-center">Customer Reviews</h1>
     <div class="col-12">
+      <?php if(isset($_SESSION["user"])) :?>
       <h3>Leave a review</h3>
       <?php include "forms/_review.php" ?>
       <hr/>
+      <?php endif; ?>
       <h2>Past Reviews on this item</h2>
       <?php include "views/shared/_reviews.php" ?>
     </div>

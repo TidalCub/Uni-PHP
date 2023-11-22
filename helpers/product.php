@@ -15,7 +15,12 @@
     $stmt->execute();
     $result = $stmt->get_result();
     $result = $result->fetch_assoc();
+    if(empty($result["average_rating"])){
+      return 5;
+    }
     $average_rating = number_format($result["average_rating"], 1);
-    return $average_rating;
+    return $average_rating;  
+
+    
   }
 ?>

@@ -5,6 +5,7 @@
   <?php 
     include 'views/shared/_head.php'; 
     include 'processess/basket.php';
+    require "helpers/product.php";
   ?>
   
 </head>
@@ -47,7 +48,11 @@
             <img src='uploads/<?= $item["image_path"] ?>' height='150px' width='auto' class="col-2">
             <div class='flex-grow-1 pt-3 pr-4'>
               <h3><?= $item["name"] ?></h3>
-              <p><?= $item["description"] ?></p>
+              <p>
+                <?php 
+                $star_rating = get_rating($item["id"]); 
+                require "views/shared/_star-rating.php"
+                ?></p>
               <a href='/product.php?product=<?= $item["id"] ?>' class='link btn btn-primary'>View</a>
               <a href='<?= $_SERVER['PHP_SELF'] ?>?option=add&value=<?= $item["id"] ?>' class='link btn btn-primary'>Add to basket (£<?= $item["price"] ?>)</a>
             </div>

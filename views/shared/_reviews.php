@@ -6,7 +6,7 @@
     <div class="col-12 d-flex flex-row">
       <div class="flex-grow-1 d-flex flex-column bg-light rd-normal">
         <div class="m-2 d-flex flex-row border-bottom">
-          <div>Username</div>
+          <div><?= $review["first_name"] ?></div>
           <div class="ps-3">
             <?php 
               for($i = 0; $i < $review["star_rating"]; $i++):

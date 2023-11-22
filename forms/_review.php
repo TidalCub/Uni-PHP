@@ -30,7 +30,8 @@
     <textarea name="product_review" class="form-control default-font" placeholder="Leave a comment here" rows=5></textarea>
   </div>
   <input type="number" name="product_id" value="<?= $product["id"]?>" hidden>
-  <button type="submit" class="btn btn-dark">Submit</button>
+  <p class="default-font"><i class='fas fa-exclamation-triangle' ></i> Your reviews will be public, but it will only show your first name</p>
+  <button type="submit" class="btn btn-dark">Post A Review</button>
 </form>
 
 <script>

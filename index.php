@@ -4,7 +4,10 @@
   <?php include 'views/shared/_head.php'; ?>
 </head>
 <body>
-<?php include 'views/shared/_header.php'; ?>
+<?php include 'views/shared/_header.php'; 
+      require "user/user_obj.php";
+      $user = new user;
+?>
   <div class="hero">
     <div class="landing-page">
       <img src="images/Desktop-landing-image.png" style="height:auto;width:100%;">
@@ -55,13 +58,7 @@
       </div>
       <div class="previous-order col-11 col-md-6 col-lg-6 text-center">
         <div class="col3 card m-auto p-3 col-11 col-md-11 col-lg-11">
-          <h1>Previous Order</h1>
-          <hr>
-          <ul class="list-unstyled">
-            <li class="text-muted">No Previous Order, Once you've ordered, previous orders will appear here</li>
-          </ul>
-          <hr>
-          <a class="link btn m-auto disabled" style="background-color: #D8D8D8; width:50%;">Re-Order</a>
+          <?php include "views/shared/_last-order.php" ?>
         </div>
       </div>
     </div>

@@ -66,6 +66,10 @@
       return $result;
     }
 
+    public function is_user(){
+      return(isset($_SESSION["user"]));
+    }
+
     public function __construct(){
       if(isset($_SESSION["user"]) && !isset($this->user_id)){
         $this->user_id = $_SESSION["user"];

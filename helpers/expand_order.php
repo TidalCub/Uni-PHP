@@ -14,8 +14,13 @@
     return $result;
   }
 
+  function expand_order_last(){
+
+  }
+
   function order_total($order_id){
     require "database/connect.php";
+  
 
     $stmt = $conn->prepare(
       "SELECT SUM(products.price) AS total

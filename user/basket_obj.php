@@ -3,7 +3,7 @@
   class basket{
     public $basket_id;
     public $user_id;
-
+    
     public function create_basket(){
       require "database/connect.php";
       $stmt = $conn->prepare("INSERT INTO orders(user_id, stat) VALUES (?,?);");

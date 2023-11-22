@@ -3,6 +3,7 @@
   if(isset($_GET["product"])){
     $product_id = $_GET["product"];
     $product = get_item($product_id);
+    $star_rating = get_rating($product_id);
   }else{
     if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["product_id"])){
       $product_id = $_POST["product_id"];
@@ -12,6 +13,8 @@
     }
     
   }
+
+  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,6 +34,13 @@
     <div class="col-12 col-md-6 col-lg-7 p-2 d-flex flex-column align-items-start">
       <div class="align-items-start col-12">
         <h1 class="col-12 text-center"><?= $product["name"]; ?></h1>
+        <div class="col-12 d-flex justify-content-center">
+          <div>
+           <?php include "views/shared/_star-rating.php" ?>  
+          </div>
+          
+        </div>
+        
         <hr/>
         <h4 class="text-center"><?= $product["description"] ?></h4>
         <hr/> 

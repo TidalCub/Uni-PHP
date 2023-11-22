@@ -1,11 +1,21 @@
 <?php
+/* 
+  This file handles the form submission for user sign up.
+  It validates the user input for email, first name, last name, and password.
+  If the input is valid, it inserts the user data into the database.
+  If there are any errors, it displays the error messages.
+ */
+?>
+<?php
   require "database/connect.php";
   require "validation.php";
 
-  $passwords_match = false;
+  //set variables to empty values and set error messages to empty
+  $passwords_match = false; 
   $email = $first_name = $last_name = $password = "";
   $email_err = $name_err = $pass_err = $confirm_pass_err = "";
 
+  //checks if the email is already in use
   function email_exists($email){
     //check if the email is in use
     require "database/connect.php";
@@ -18,14 +28,14 @@
   
   if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-    //validates email
-    $canidate_email = filter_var($_POST["Email"], FILTER_VALIDATE_EMAIL);
+    //validates email, if the email is valid, it checks if the email is already in use, then if it is not, it assigns the email to the variable
+    $candidate_email = filter_var($_POST["Email"], FILTER_VALIDATE_EMAIL);
     if(validate_email($_POST["Email"])){ //check if email is in the format of an email
       $email_err = "Invalid Email, must look like example@provider.com";
-    }elseif(email_exists($canidate_email)){
+    }elseif(email_exists($candidate_email)){
       $email_err = "User Already found by this email";
     }else{
-      $email = $canidate_email;
+      $email = $candidate_email;
     }
 
     //validates first name and last name

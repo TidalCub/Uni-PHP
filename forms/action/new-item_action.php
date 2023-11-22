@@ -1,4 +1,11 @@
 <?php 
+/*
+  This action handles the submission of a new product. It inserts the product data into the database and displays a success message 
+  if the insertion is successful. It also handles the file upload.
+*/
+?>
+<?php 
+//this function handles the file upload, by moving the file from the temp directory to the uploads directory
 function file_handler() {
   $uploaddir = 'uploads/';
   $uploadfile = $uploaddir . basename($_FILES['product_image']['name']);
@@ -12,6 +19,7 @@ function file_handler() {
   return basename($uploadfile);
 }
 
+//this function gets the form data and sterilizes it, this is done here to follow the single principle of responsibility
 function get_params(){
   return [
     'productName' => htmlspecialchars($_POST["ProductName"]),

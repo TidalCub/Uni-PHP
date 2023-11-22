@@ -1,3 +1,9 @@
+<?php
+/*
+ This PHP script handles the submission of a product review form.
+ It inserts the review data into the database and displays a success message if the insertion is successful.
+ */
+?>
 <?php 
   require "user/user_obj.php";
 

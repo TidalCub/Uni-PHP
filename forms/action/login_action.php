@@ -1,4 +1,9 @@
 <?php 
+  /*
+    This action handles the login of a user. It creates a new user object and calls the login function on it.
+  */
+?>
+<?php 
   require "database/connect.php";
   require "validation.php";
   require "user/user_obj.php";

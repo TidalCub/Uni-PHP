@@ -45,6 +45,9 @@
     <div class="col-12">
       <h3>Leave a review</h3>
       <?php include "forms/_review.php" ?>
+      <hr/>
+      <h2>Past Reviews on this item</h2>
+      <?php include "views/shared/_reviews.php" ?>
     </div>
   </div>
 </div>

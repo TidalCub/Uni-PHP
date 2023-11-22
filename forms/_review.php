@@ -1,4 +1,7 @@
-<?php require "forms/action/review_action.php" ?>
+<!-- Review Form, this is a form allows a user to submit a review of an item. Forms are placed outside of the html where they will be used to isolate
+them and make maintaining and debugging easier. The form is submitted to its self by using  echo htmlspecialchars($_SERVER["PHP_SELF"]); -->
+
+<?php require "forms/action/review_action.php" //The forms action is required so a form can submit to its self and all the logic is in one place?>
 <form method="POST" class="col-12" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 
   <div class="form-check d-flex justify-content-center">
@@ -29,7 +32,7 @@
     <label>Your Comments</label>
     <textarea name="product_review" class="form-control default-font" placeholder="Leave a comment here" rows=5></textarea>
   </div>
-  <input type="number" name="product_id" value="<?= $product["id"]?>" hidden>
+  <input type="number" name="product_id" value="<?= $product["id"]?>" hidden> <!-- This is a hidden input that will be used to pass the product id to the review_action.php -->
   <p class="default-font"><i class='fas fa-exclamation-triangle' ></i> Your reviews will be public, but it will only show your first name</p>
   <button type="submit" class="btn btn-dark">Post A Review</button>
 </form>

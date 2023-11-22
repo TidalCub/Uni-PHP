@@ -1,3 +1,7 @@
+<!--A new item form, this form allows for a staff member to add new items. It takes in the name, price a description and a image for the item. 
+Forms are placed outside of the html where they will be used to isolate
+them and make maintaining and debugging easier. The form is submitted to its self by using  echo htmlspecialchars($_SERVER["PHP_SELF"]); -->
+
 <?php require_once("action/new-item_action.php") ?>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data">
   <div class="form-group">
@@ -15,6 +19,7 @@
   <div class="form-group">
     <label > Category: </label>
     <select name="CategoryId" id="CategoryId" class="form-control">
+      <!-- This is a php loop that will loop through all the categories in the database and add them to the select box -->
       <?php
         require_once("database/query.php");
         $results = query_table("categories");

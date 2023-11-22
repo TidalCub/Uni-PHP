@@ -1,3 +1,6 @@
+<!-- Login form, This allows a user to login into their account. Forms are placed outside of the html where they will be used to isolate
+them and make maintaining and debugging easier. The form is submitted to its self by using  echo htmlspecialchars($_SERVER["PHP_SELF"]); -->
+
 <form class="form form bg-light w-50 m-auto p-3 rounded" id="SignUpForm" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"> 
   <h1>Login</h1> 
   <div class="form-group">

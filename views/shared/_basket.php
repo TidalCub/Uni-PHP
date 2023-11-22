@@ -1,3 +1,4 @@
+<!--This is the basket parial used to display the current contents of a users basket -->
 <?php 
 if(isset($_SESSION["user"])):
     $results = $basket->get_basket();

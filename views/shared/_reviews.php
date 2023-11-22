@@ -1,3 +1,4 @@
+<!-- Reviews, this is the base code to display reviews on a product, it gets the product id from the file is loaded into, and will display all reviews for that product -->
 <div class="col-12 d-flex flex-column gap-3 default-font">
   <?php 
     require "helpers/reviews.php";

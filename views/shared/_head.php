@@ -1,4 +1,5 @@
-<?php session_start(); ?>
+<!-- This is the head partial used to load in all the css, js and bootstrap requirements so all pages load the same resources-->
+<?php session_start(); //This is kept in the head as session is important to keep track of the user logged in?>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">

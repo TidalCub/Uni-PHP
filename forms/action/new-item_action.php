@@ -29,23 +29,26 @@ function get_params(){
   ];
 }
 
-if($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["table"] == "products"){
-  $path = file_handler();
-  $params = get_params();
-  if (is_numeric($params["productPrice"])) {
-    $stmt = $conn->prepare("INSERT INTO products (name, description, price, category_id, image_path) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssdis", $params["productName"], $params["productDescription"], $params["productPrice"], $params["categoryId"], $path);
-    header("Location: /manage.php");
-    if ($stmt->execute()) {
-      echo "Successfully Added";
-      
-    } else {
-      echo "Error: " . $stmt->error;
-    }
+if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["table"]) ){
+  if($_POST["table"] == "products"){
+    require "database/connect.php";
+    $path = file_handler();
+    $params = get_params();
+    if (is_numeric($params["productPrice"])) {
+      $stmt = $conn->prepare("INSERT INTO products (name, description, price, category_id, image_path) VALUES (?, ?, ?, ?, ?)");
+      $stmt->bind_param("ssdis", $params["productName"], $params["productDescription"], $params["productPrice"], $params["categoryId"], $path);
+      header("Location: /manage.php");
+      if ($stmt->execute()) {
+        echo "Successfully Added";
+        
+      } else {
+        echo "Error: " . $stmt->error;
+      }
 
-    $stmt->close();
-  } 
-    
-    exit();
+      $stmt->close();
+    } 
+      
+      exit();
+  }
 };
 ?>

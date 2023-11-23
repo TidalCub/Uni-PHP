@@ -18,9 +18,5 @@
   </div>
   <hr/>
   <?php require_once("views/shared/sys/_product_table.php") ?>
-  <dialog>
-
-  </dialog>
-  
 </body>
 </html>

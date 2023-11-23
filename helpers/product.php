@@ -15,7 +15,7 @@
 select the product with the given ID. It then executes the statement and fetches the result. The result, which 
 is the product details, is returned by the function. */
   function get_item($id){
-    require_once "database/connect.php";
+    require $_SERVER["DOCUMENT_ROOT"]."/database/connect.php";
     $stmt = $conn->prepare("SELECT * FROM products WHERE id = ?");
     $stmt->bind_param("i", $id);
     $stmt->execute();

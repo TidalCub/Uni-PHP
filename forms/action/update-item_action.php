@@ -16,6 +16,22 @@
       }
 
 
-    }
+    }elseif ($_POST["action"] == "delete_product") {
+      if (!isset($_POST["product_id"])) {
+          echo "Error: ID not set";
+          return;
+      }
+
+      require "database/connect.php";
+      $stat = 0;
+      $stmt = $conn->prepare("UPDATE products SET available = ? WHERE id = ?");
+      $stmt->bind_param("ii", $stat, $_POST["product_id"]);
+
+      if ($stmt->execute()) {
+          echo "Successfully Deleted " . $_POST["name"];
+      } else {
+          echo "Error: " . $stmt->error;
+      }
+  }
   }
 ?>

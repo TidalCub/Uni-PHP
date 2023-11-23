@@ -5,7 +5,7 @@
 
   function get_all_items(){
     require "database/connect.php";
-    $stmt = $conn->prepare("SELECT * FROM products");
+    $stmt = $conn->prepare("SELECT * FROM products WHERE available = 1");
     $stmt->execute();
     $result = $stmt->get_result();
     return $result;

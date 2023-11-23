@@ -14,7 +14,7 @@
   function get_child($parent_id){
     require "connect.php";
 
-    $sql = "SELECT * FROM products WHERE category_id = $parent_id";
+    $sql = "SELECT * FROM products WHERE category_id = $parent_id AND available = 1";
     $result = $conn->query($sql);
     return $result;
   }

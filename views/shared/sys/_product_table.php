@@ -41,7 +41,7 @@
           <button class="btn btn-success" type="submit" disabled>
             <i class="fa-solid fa-floppy-disk"></i>
           </button>
-          <button class="btn btn-danger" type="button">
+          <button class="btn btn-danger" type="button" onclick="deleteItem(<?=$item['id'] ?>)">
             <i class="fa-solid fa-trash"></i>
           </button>
         </div>
@@ -85,5 +85,14 @@
 
     
     
+  }
+
+  function deleteItem(itemId) {
+    var confirmation = confirm("Are you sure you want to delete this item?");
+    if (confirmation) {
+      var form = document.getElementById("form-" + itemId);
+      form.querySelector('input[name="action"]').value = "delete_product";
+      form.submit();
+    }
   }
 </script>

@@ -51,8 +51,8 @@
 
         <!-- while loop to display all the items within the category -->
         <?php while ($item = $itemsResult->fetch_assoc()): ?>
-          <div class='item col-lg-8 col-sm-11 col-11'>
-            <img src='uploads/<?= $item["image_path"] ?>' height='150px' width='auto' class="col-2">
+          <div class='item col-lg-8 col-11'>
+            <img src='uploads/<?= $item["image_path"] ?>' height='150px' width='auto' class="col-4 col-md-3 col-lg-2">
             <div class='flex-grow-1 pt-3 pr-4'>
               <h3><?= $item["name"] ?></h3>
               <p>

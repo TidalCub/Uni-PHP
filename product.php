@@ -27,8 +27,8 @@
 <body>
 <?php require_once "views/shared/_header.php"; ?>
 <div class="d-flex flex-column">
-  <div class="d-flex flex-row pt-5 pb-5 flex-wrap">
-    <div class="col-12 col-md-6 col-lg-5 p-2">
+  <div class="d-flex flex-row flex-wrap">
+    <div class="col-12 col-md-6 col-lg-5">
       <img class="" width="100%" height="auto" src="uploads/<?= $product["image_path"]?>">
     </div>
     <div class="col-12 col-md-6 col-lg-7 p-2 d-flex flex-column align-items-start">

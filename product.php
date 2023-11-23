@@ -46,7 +46,7 @@
         <hr/> 
       </div>
       <div class="col-12 d-flex justify-content-center align-self-end">
-        <a class="btn btn-dark pt-3"><h3>Add to Basket | <?= $product["price"] ?></h3></a>
+        
       </div>
     </div>
   </div>

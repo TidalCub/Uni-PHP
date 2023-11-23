@@ -2,7 +2,16 @@
 //This script contains two helper functions related to product details and ratings
 ?>
 <?php 
-/*This function takes a product ID as an argument, connects to the database, and prepares a SQL statement to 
+
+  function get_all_items(){
+    require "database/connect.php";
+    $stmt = $conn->prepare("SELECT * FROM products");
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result;
+  }
+  
+  /*This function takes a product ID as an argument, connects to the database, and prepares a SQL statement to 
 select the product with the given ID. It then executes the statement and fetches the result. The result, which 
 is the product details, is returned by the function. */
   function get_item($id){

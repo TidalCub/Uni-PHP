@@ -37,7 +37,7 @@
     public function __construct(){
       require "database/connect.php";
       if(!isset($_SESSION["user"])){
-        header("Location: /login.php?redirect=menu.php&requier_signin=true", 300);
+        //("Location: /login.php?redirect=menu.php&requier_signin=true", 300);
       };
       $this->user_id = $_SESSION["user"];
       $this->find_basket();

@@ -1,8 +1,8 @@
+<?php require "forms/action/payment_action.php" //This is required to so the forms action is in the same file so the form and submit to itself?>
+
 <!-- Payment form, this is a form used to process payment. A form is used for this to allow payment options, times and other options to the user when 
 checking out. Forms are placed outside of the html where they will be used to isolate
 them and make maintaining and debugging easier. The form is submitted to its self by using  echo htmlspecialchars($_SERVER["PHP_SELF"]); -->
-<?php require_once "forms/action/payment_action.php" //This is required to so the forms action is in the same file so the form and submit to itself?>
-
 <div class="checkout-payment col-6 col-lg-4 col-6 d-flex flex-column gap-2 justify-content-around">
   <!-- This is a check to see if the current time is between 8am and 7pm, if its not, do not let the user checkout -->
   <?php if(date('H:i') < "19:00" && date("H:i") > "08:00"):?> 

@@ -7,7 +7,7 @@ The result, which is a list of all paid orders, is returned by the function.
 ?>
 <?php
   function all_orders(){
-    require_once "database/connect.php";
+    require "database/connect.php";
     $stmt = $conn->prepare(
       "SELECT orders.id, orders.user_id, orders.stat, orders.created_at
       FROM orders
@@ -17,6 +17,20 @@ The result, which is a list of all paid orders, is returned by the function.
     $stmt->execute();
     $result = $stmt->get_result();
     return $result;
+
+  }
+
+  function item_count($id){
+    require "database/connect.php";
+    $stmt = $conn->prepare(
+      "SELECT COUNT(*) AS total_items
+      FROM order_items
+      WHERE order_id = ?;
+      ");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_assoc();
   }
 
   

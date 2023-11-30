@@ -57,7 +57,7 @@
     }
 
     //This function is used to get all orders for a user
-    public function get_all_orders($limit){
+    public function get_all_orders(){
       require "database/connect.php";
       $stmt = $conn->prepare(
         "SELECT orders.id, orders.user_id, orders.stat, orders.created_at
@@ -65,9 +65,9 @@
         JOIN users ON orders.user_id = users.id
         WHERE users.id = ?
         AND orders.stat IN ('completed', 'paid')
-        LIMIT ?;"
+        ORDER BY created_at DESC"
       );
-      $stmt->bind_param("ii", $this->user_id, $limit);
+      $stmt->bind_param("i", $this->user_id);
       $stmt->execute();
       $result = $stmt->get_result();
       return $result;

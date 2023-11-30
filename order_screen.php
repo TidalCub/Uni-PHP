@@ -9,7 +9,7 @@
   <div class="col-12 d-flex gap-2 flex-wrap flex-row p-2">
     <?php
     // Include helper files for fetching and expanding orders
-    require_once "helpers/all_orders.php";
+    require_once "helpers/orders.php";
     require "helpers/expand_order.php";
     
     // Loop through all orders

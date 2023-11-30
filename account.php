@@ -8,6 +8,7 @@
     require "views/shared/_header.php";
     require_once "user/user_obj.php";  
     require "helpers/expand_order.php";
+    require "helpers/orders.php";
     $user = new user();
     ?>
   <div class="d-flex flex-wrap">
@@ -49,25 +50,56 @@
       </div>
       
     </div>
-    <div class="col-12 col-md-9 col-lg-9 ">
+    <div class="col-12 col-md-9 col-lg-9">
       <h1 class="text-center">Past Orders</h1>
-      <div class="col-12 d-flex gap-2 flex-wrap flex-row p-2">
-        <?php foreach($user->get_all_orders(10) as $order):?>
-          <div class="col-12 col-md-3 col-lg-3 bg-light rd-normal p-2">
-            <h3 class="text-center">Order: <?= $order["id"]?></h3>
-            <p class="text-center">Ordered at: <?= $order["created_at"] ?></p>
-            <hr/>
-            <?php foreach(expand_order($order["id"]) as $items) :?>
-              <p><?= $items["product_name"] ?></p>
-            <?php endforeach ?>
-            <hr/>
-            <h6 class="text-end">Total: <?=order_total($order["id"]) ?></h6>
-          </div>
+      <table class="col-12 m-2 text-center">
+        <thead>
+          <td>Order id</td>
+          <td>Created At</td>
+          <td>Items in Order</td>
+          <td>Total Price</td>
+          <td>View</td>
+        </thead>
+        <tbody>
+        <?php foreach($user->get_all_orders() as $order):?>
+          <tr class="border-bottom">
+            <td><?= $order["id"]?></td>
+            <td><?= $order["created_at"]?></td>
+            <td><?php echo item_count($order["id"])["total_items"] ?></td>
+            <td><?=order_total($order["id"]) ?></td>
+            <td>
+              <dialog id="<?= $order["id"] ?>" class="col-11 col-md-6 col-lg-6 rd-normal">
+                <h5>Order Id: <?= $order["id"] ?></h5>
+                <p><?= $order["created_at"] ?></p>
+                <hr/>
+                <p>Items in Order:</p>
+                <?php foreach(expand_order($order["id"]) as $items) :?>
+                  <h3><?= $items["product_name"] ?></h3>
+                <?php endforeach ?>
+                <button autofocus onclick="close_dialog(<?= $order['id'] ?>)" class="btn btn-primary">Close</button>
+              </dialog>
+              <button class="btn btn-primary" onclick="open_dialog(<?= $order['id'] ?>)"><i class="fa-solid fa-eye"></i></button>
+            </td>
+          </tr>
         <?php endforeach ?>
+        </tbody>
+      </table>
       </div>
       
     </div>
   </div>
+
+  <script>
+    function open_dialog(id){
+      const dialog = document.getElementById(id);
+      dialog.showModal();
+    }
+
+    function close_dialog(id){
+      const dialog = document.getElementById(id);
+      dialog.close();
+    }
+  </script>
 </body>
 
 </html>

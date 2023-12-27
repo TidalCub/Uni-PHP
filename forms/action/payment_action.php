@@ -7,16 +7,23 @@ this would be the place to do it.
 
 ?>
 <?php 
-
-  function get_params(){
-    return [];
-  }
+  require "processes/mailer.php";
 
   if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $user = new user();
+    $email = $user->get_user_details()->fetch_assoc()["email"];
+    // Create a new EmailSender object
+    $emailSender = new EmailSender($email, "Order Confirmation", "Thank you for your order");
+    
+
+    
+
     require_once "database/connect.php";
     $order_num = $basket->basket_id;
     if($basket->update_status()){
       header("Location: /order_complete.php?order_num=".$order_num) ;
+      // Call the desired methods of the EmailSender object
+      $emailSender->sendEmail();
       exit;
     }
     echo"Error :(";

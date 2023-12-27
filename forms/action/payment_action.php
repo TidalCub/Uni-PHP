@@ -7,19 +7,18 @@ this would be the place to do it.
 
 ?>
 <?php 
-  require "processess/mailer.php";
-  
+   require "processess/mailer.php";
+
+   $emailsender = new EmailSender;
+
   if($_SERVER["REQUEST_METHOD"] == "POST"){
-    
-    // Create a new EmailSender object
-    $emailSender = new EmailSender($email, "Order Confirmation", "Thank you for your order");
 
     require_once "database/connect.php";
     $order_num = $basket->basket_id;
     if($basket->update_status()){
       header("Location: /order_complete.php?order_num=".$order_num) ;
       // Call the desired methods of the EmailSender object
-      $emailSender->sendEmail();
+      $emailsender->sendEmail("Order Confirmed!", "Your Order has been confirmed", $email);
       exit;
     }
     echo"Error :(";

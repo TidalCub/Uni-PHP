@@ -8,7 +8,8 @@ this would be the place to do it.
 ?>
 <?php 
   require "processess/mailer.php";
-
+  require_once "user/user_obj.php";
+  
   if($_SERVER["REQUEST_METHOD"] == "POST"){
     $user = new user();
     $email = $user->get_user_details()->fetch_assoc()["email"];

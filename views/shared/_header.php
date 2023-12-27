@@ -9,11 +9,8 @@
     </div>
   </div>
   <div class="custom-nav">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
+    <div class="" id="navbarNav">
+      <ul class="navbar-nav ml-auto d-flex flex-row gap-4 col-12 ps-1">
         <li class="nav-item active">
           <a class="nav-link" href="/">Home</a>
         </li>

@@ -7,7 +7,7 @@ this would be the place to do it.
 
 ?>
 <?php 
-  require "processes/mailer.php";
+  require "processess/mailer.php";
 
   if($_SERVER["REQUEST_METHOD"] == "POST"){
     $user = new user();

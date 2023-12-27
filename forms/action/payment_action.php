@@ -8,16 +8,11 @@ this would be the place to do it.
 ?>
 <?php 
   require "processess/mailer.php";
-  require_once "user/user_obj.php";
   
   if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $user = new user();
-    $email = $user->get_user_details()->fetch_assoc()["email"];
+    
     // Create a new EmailSender object
     $emailSender = new EmailSender($email, "Order Confirmation", "Thank you for your order");
-    
-
-    
 
     require_once "database/connect.php";
     $order_num = $basket->basket_id;

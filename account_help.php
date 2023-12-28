@@ -13,7 +13,22 @@
 <body>
   <?php require "views/shared/_header.php" ?>
   <h1 class="col-12 text-center">Reset your password</h1>
+  <?php 
+    require 'processess/token_obj.php';
+    $tokenGenerator = new TokenGenerator;
 
-  <?php require "forms/_password-reset.php" ?>
+    if(isset($_GET["token"])){
+      $token = htmlspecialchars($_GET["token"]);
+      $result = $tokenGenerator->decodeToken($token);
+      if($result["status"] = 200){
+        require "forms/_set-password.php";
+      } else{
+        echo "Invalid Token";
+      }
+
+    } else{
+      require "forms/_password-reset.php";
+    }
+    ?>
 </body>
 </html>

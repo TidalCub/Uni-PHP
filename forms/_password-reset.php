@@ -7,6 +7,7 @@
       <label>Your Email:</label>
       <input type="email" class="form-control" id="Email" name="Email" >
     </div>
+    <input type="hidden" name="action" value="password-reset-request">
     <button class="btn btn-primary mt-2" type="submit">Request Password Reset</button>
     <div class="text-danger"><?php if(isset($message)){echo $message;}; ?></div>
   </form>

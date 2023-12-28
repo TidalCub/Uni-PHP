@@ -8,6 +8,7 @@
 
       $user = new user();
       $email = $user->get_user_details()->fetch_assoc()["email"];
+      $name = $user->get_user_details()->fetch_assoc()["first_name"];
     ?>
 </head>
 <body >
@@ -21,7 +22,6 @@
           <?php require "views/shared/_basket.php"?>
         </div>
         <?php require_once "forms/_payment.php"?>
-        <h1>ewf: <?= $email ?></h1>
       </div>
     </div>
 </body>

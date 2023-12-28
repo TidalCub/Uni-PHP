@@ -10,7 +10,7 @@ class EmailSender {
     private $smtpServer;
     private $mail;
 
-    public function __construct($type) {
+    public function __construct() {
         $this->smtpServer = $_ENV["EMAIL_SMTP"];  // Corrected property name
 
         // Initialize PHPMailer
@@ -25,16 +25,26 @@ class EmailSender {
         $this->mail->SMTPSecure = 'tls';
     }
 
-    public function sendEmail($subject, $body, $toEmail) {
+    public function sendOrderEmail($subject, $body, $toEmail, $data) {
         try {
             // Recipients
             $this->mail->setFrom("orders@mmi.leon-skinner.dev");
             $this->mail->addAddress($toEmail);
 
             // Content
-            $this->mail->isHTML(false);
+            $this->mail->isHTML(true);
             $this->mail->Subject = $subject;
-            $this->mail->Body = $body;
+            
+            // Read the HTML content from the file
+            $htmlContent = file_get_contents("emails/order_confirmation.html");
+
+            // Replace placeholders with actual values
+            foreach ($data as $key => $value) {
+                $placeholder = '{' . strtoupper($key) . '}';
+                $htmlContent = str_replace($placeholder, $value, $htmlContent);
+            }
+
+            $this->mail->Body = $htmlContent;
 
             // Send the email
             $this->mail->send();

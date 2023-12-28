@@ -53,4 +53,27 @@ class EmailSender {
             echo "Email could not be sent. Mailer Error: {$this->mail->ErrorInfo}";
         }
     }
+    public function sendPasswordReset($subject, $toEmail, $data){
+        // Recipients
+        $this->mail->setFrom("help@mmi.leon-skinner.dev");
+        $this->mail->addAddress($toEmail);
+
+        // Content
+        $this->mail->isHTML(true);
+        $this->mail->Subject = $subject;
+        
+        // Read the HTML content from the file
+        $htmlContent = file_get_contents("emails/password_reset.html");
+
+        // Replace placeholders with actual values
+        foreach ($data as $key => $value) {
+            $placeholder = '{' . strtoupper($key) . '}';
+            $htmlContent = str_replace($placeholder, $value, $htmlContent);
+        }
+
+        $this->mail->Body = $htmlContent;
+
+        // Send the email
+        $this->mail->send();
+    }
 }

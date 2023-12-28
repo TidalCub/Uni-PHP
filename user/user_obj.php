@@ -3,8 +3,8 @@
   class user{
     public $user_id;
 
-    //This function is used to find a user based on the id stored in the session
-    private function find_user($email){
+    //This function is used to find a user
+    public function find_user($email){
       require "database/connect.php";
       $sql = "SELECT * FROM users WHERE email = ?";
       $stmt = $conn->prepare($sql);

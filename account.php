@@ -39,7 +39,7 @@
             <hr/>
               <div class="col-12 d-flex justify-content-center gap-3">
                 <a href="user/logout.php" class="btn btn-dark">Logout</a>
-                <a href="" class="btn btn-dark">Update Details</a>
+                <a class="btn btn-dark" href="/account_help.php">Update Password</a>
               </div>
           </div>
         <?php endforeach; ?>

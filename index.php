@@ -56,11 +56,6 @@
             Check out our menu
           </a>
       </div>
-      <div class="previous-order col-11 col-md-6 col-lg-6 text-center">
-        <div class="col3 card m-auto p-3 col-11 col-md-11 col-lg-11">
-          <?php include "views/shared/_last-order.php" ?>
-        </div>
-      </div>
     </div>
   </div>
   

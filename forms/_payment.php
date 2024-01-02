@@ -3,13 +3,13 @@
 <!-- Payment form, this is a form used to process payment. A form is used for this to allow payment options, times and other options to the user when 
 checking out. Forms are placed outside of the html where they will be used to isolate
 them and make maintaining and debugging easier. The form is submitted to its self by using  echo htmlspecialchars($_SERVER["PHP_SELF"]); -->
-<div class="checkout-payment col-6 col-lg-4 col-6 d-flex flex-column gap-2 justify-content-around">
+<div class="checkout-payment col-12 d-flex flex-column gap-2 justify-content-around">
   <!-- This is a check to see if the current time is between 8am and 7pm, if its not, do not let the user checkout -->
   <?php if(date('H:i') < "19:00" && date("H:i") > "08:00"):?> 
 
   <form class="form" id="" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <div class="col-12"><span class="h5"> Chose Payment Method</span></div>
-    <div class="checkout-payment-choice col-12">
+    <div class="checkout-payment-choice col-12 pe-2">
       <div class="d-flex col-12 justify-content-around pt-2">
         <div class="form-check pay-radio d-flex justify-content-center">
           <input class="form-check-input" type="radio" name="pay-type" id="google-pay" value="google-pay" required>
@@ -30,7 +30,7 @@ them and make maintaining and debugging easier. The form is submitted to its sel
           </label>
         </div>
       </div>
-      <p class="ps-2 text-muted">We do not accept amex</p>
+      <p class="ps-2 text-muted d-none d-md-inline d-lg-inline">We do not accept amex</p>
     </div>
     <div class="col-12"><span class="h5">Order Details</span></div>
     <div class="checkout-payment-details col-12">
